@@ -59,4 +59,7 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-main_input_giftcode(1000)
+if (document.URL == 'https://wos-giftcode.centurygame.com/') {
+  main_input_giftcode(1000)
+}
+
