@@ -59,4 +59,4 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-await main_input_giftcode(1000)
+main_input_giftcode(1000)
