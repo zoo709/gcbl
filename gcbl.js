@@ -1,4 +1,4 @@
-async function main_input_giftcode(sleep_interval_millsec = 1000) {
+async function main_input_giftcode(sleep_interval_millsec) {
   
   var giftcode = prompt("Input GiftCode")
   var members = prompt("Input Account IDs").split(/[,\s\r\n]/).filter(v => v != "")
@@ -58,3 +58,5 @@ async function input_giftcode(id, giftcode, sleep_interval_millsec) {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+await main_input_giftcode(1000)
