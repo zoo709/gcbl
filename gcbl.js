@@ -1,6 +1,6 @@
 async function main_input_giftcode(sleep_interval_millsec) {
 
-  if (false = /https:\/\/wos-giftcode.centurygame.com/i.test(document.URL)) {
+  if (false == /https:\/\/wos-giftcode.centurygame.com/i.test(document.URL)) {
     alert("Gift Code Center ページを開いてからブックマークを呼び出してください。")
     return
   }
