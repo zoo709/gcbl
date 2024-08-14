@@ -1,4 +1,10 @@
 async function main_input_giftcode(sleep_interval_millsec) {
+
+  if (false = /https:\/\/wos-giftcode.centurygame.com/i.test(document.URL)) {
+    alert("Gift Code Center ページを開いてからブックマークを呼び出してください。")
+    return
+  }
+  
   var defaultIds = "106466278,138437423,140717937,151400505,162856970,106694702,105629664,149586812,107008535,147389451,106041092,147977957,102677970,132660856,166350251,107022728,166383017,113093626"
   var giftcode = prompt("Input GiftCode")
   var members = prompt("Input Account IDs", defaultIds).split(/[,\s\r\n]/).filter(v => v != "")
