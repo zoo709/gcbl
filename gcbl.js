@@ -47,6 +47,7 @@ async function input_giftcode(id, giftcode, sleep_interval_millsec) {
   
   await sleep(500)
   document.querySelector(SELECTOR_EXCHANGE_BTN).click()
+  await sleep(500)
   
   while (null == document.querySelector(SELECTOR_POPUP_CONFIRM_BTN)) { await sleep(500) }
   var confirm_msg = document.querySelector(SELECTOR_POPUP_MESSAGE).innerText
