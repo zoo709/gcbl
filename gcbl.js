@@ -1,6 +1,6 @@
 async function main_input_giftcode(sleep_interval_millsec) {
   
-  var defaultIds = "106466278,138437423,140717937,151400505,162856970,106694702,105629664,149586812,107008535,147389451,106041092,147977957,102677970,132660856,166350251,107022728,166383017,105614885,150373254,166266826"
+  var defaultIds = "106466278,138437423,140717937,151400505,162856970,106694702,105629664,105959847,107008535,147389451,105565854,184489033,102677970,132660856,166350251,107022728,166383017,105614885,150373254,166266826,105565854,184489033"
   var giftcode = prompt("Input GiftCode")
   var members = prompt("Input Account IDs", defaultIds).split(/[,\s\r\n]/).filter(v => v != "")
   
@@ -41,6 +41,8 @@ async function input_giftcode(id, giftcode, sleep_interval_millsec) {
   document.querySelector(SELECTOR_CHARA_ID_INPUT).value = id;
   document.querySelector(SELECTOR_CHARA_ID_INPUT).dispatchEvent(new Event("input"));
   document.querySelector(SELECTOR_LOGIN_BTN).click();
+
+  while (null == document.querySelector(SELECTOR_EXIT_BTN)) { await sleep(100) } // wait for login
 
   while (null == document.querySelector(SELECTOR_GIFTCODE_INPUT)) { await sleep(100) }
   document.querySelector(SELECTOR_GIFTCODE_INPUT).value = giftcode;
