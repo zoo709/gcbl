@@ -48,7 +48,7 @@ async function input_giftcode(id, giftcode, sleep_interval_millsec) {
   document.querySelector(SELECTOR_GIFTCODE_INPUT).value = giftcode;
   document.querySelector(SELECTOR_GIFTCODE_INPUT).dispatchEvent(new Event("input"));
   
-  await sleep(500)
+  await sleep(100)
   document.querySelector(SELECTOR_EXCHANGE_BTN).click()
   await sleep(500)
   
