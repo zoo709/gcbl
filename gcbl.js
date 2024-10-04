@@ -6,18 +6,20 @@ async function main_input_giftcode(sleep_interval_millsec) {
   
   var result_summary = ""
   
-  for (let i=0; i<members.length; ++i) {
-    var res_msg = await input_giftcode(members[i], giftcode)
+  while (members.length > 0) {
+    var member = members.shift()
+    var res_msg = await input_giftcode(member, giftcode)
     
     if (res_msg == "交換コードがありません") break
-    if (res_msg.startsWith("交換成功です。"))
-      result_summary += `\n${members[i]}\t${giftcode}\tOK`
-    else if (res_msg.startsWith("この報酬は受取済です。"))
-      result_summary += `\n${members[i]}\t${giftcode}\tAlready`
-    else
-      result_summary += `\n${members[i]}\t${giftcode}\tNG\t${res_msg}`
-
-    await sleep(sleep_interval_millsec)
+    if (res_msg.startsWith("交換成功です。")) {
+      result_summary += `\n${member}\t${giftcode}\tOK`
+    } else if (res_msg.startsWith("この報酬は受取済です。")) {
+      result_summary += `\n${member}\t${giftcode}\tAlready`
+    } else {
+      result_summary += `\n${member}\t${giftcode}\tNG\t${res_msg}`
+      members.push(member) // add queue again for retry
+    }
+    // await sleep(sleep_interval_millsec)
   }
   
   prompt("実行結果", result_summary)
